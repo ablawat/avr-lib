@@ -1,14 +1,10 @@
-delay_ms:           push    r16
+delay_ms:           ldi     r16, 0xF9
                     
-delay_ms_A0:        ldi     r16, 249
-                    
-delay_ms_A1:        nop
+delay_ms_loop:      nop
                     dec     r16
-                    brne    delay_ms_A1
+                    brne    delay_ms_loop
                     
                     sbiw    r24, 1
-                    brne    delay_ms_A0
-                    
-                    pop     r16
+                    brne    delay_ms
                     
                     ret
